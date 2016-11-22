@@ -20,8 +20,9 @@ int main(int argc, char **argv) {
   while (i < sizeof(ap)/sizeof(char*)) {
     ap[i] = malloc(chunk_size);
     if (ap[i]) {
-      printf("allocated %d bytes, total %.1f GB\n", chunk_size, (float)(chunk_size+i*chunk_size)/(1024*1024*1024));
-      memset(ap[i], 'x', chunk_size);
+      printf("allocated %d bytes, total %.1f GB\n",
+        chunk_size, (float)(chunk_size+i*chunk_size)/(1024*1024*1024));
+      memset(ap[i], i, chunk_size);
     } else {
       printf("can't allocate %ul bytes\n", chunk_size);
       break;

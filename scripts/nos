@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# $Id: nos,v 1.3 2006/07/27 20:02:46 root Exp $
+#
+# Removes :space: chars and comments (#, ;)
+#
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+args=`getopt hs $*`
+if [ $? != 0 ]; then
+    echo "Usage: $0 [-h] [-s]" >&2
+    echo "    -h: removes spaces and hash-comments" >&2
+    echo "    -s: removes spaces and semicolon-comments" >&2
+    exit 2;
+fi
+
+no_hashes=""
+no_semicolons=""
+
+set -- $args
+for i in $*; do
+    case "$i" in
+	-h)
+	    no_hashes=1
+	    shift;;
+	-s)
+	    no_semicolons=1
+	    shift;;
+	--)
+	    shift
+	    break;;
+    esac
+done
+
+cmd=""
+if [ -n "$no_hashes" -o -n "$no_semicolons" ]; then
+    cmd="-e 's/[${no_hashes:+#}${no_semicolons:+;}].*\$//'"
+fi
+cmd="$cmd -e '/^[ 	]*\$/d'"
+eval "sed $cmd"

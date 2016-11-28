@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# common part v2.1
+exec 2>&1
+
+os ()
+{
+    uname | tr '[:upper:]' '[:lower:]'
+}
+
+mail=mail
+case `os` in
+    sunos)
+	curtime () { perl -e 'print time'; }
+	mail=mailx
+	;;
+    *)
+	curtime () { date +%s; }
+	;;
+esac
+
+lastrunfile='lastrun'
+idletime=60
+
+if [ -f $lastrunfile ]; then
+    sec=`curtime`
+    lastrun=`cat $lastrunfile`
+    diff=`expr $sec - $lastrun`
+    if [ $diff -lt $idletime ]; then
+        sleep $idletime
+    fi
+fi
+
+curtime > $lastrunfile
+msg="`hostname` `pwd` restarted"
+echo "$msg" | $mail -s "$msg" root
+
+# disable coredumps to save disk space
+ulimit -c 0
+
+# end of common part

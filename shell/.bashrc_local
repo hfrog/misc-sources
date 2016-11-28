@@ -1,0 +1,14 @@
+#
+# $Id: .bashrc_local,v 1.1 2008/06/26 10:20:15 root Exp $
+# $Template: 1.4 $
+#
+PATH=$PATH:/usr/local/pgsql/bin:/usr/local/mysql/bin
+
+case `os` in
+    sunos)
+	PATH=/usr/sfw/bin:/usr/ucb:$PATH
+	;;
+    *)
+	unset MANPATH
+#	export MANPATH=$(manpath -q):/usr/local/pgsql/man
+esac

@@ -1,18 +1,15 @@
-FROM ubuntu
+FROM gliderlabs/alpine:3.4
+WORKDIR /root
 ADD Dockerfile /
 #COPY Dockerfile /
-RUN apt-get -y update \
-        && apt-get -y install \
-                bind9-host \
-                bridge-utils \
-                curl \
-                dnsutils \
-                iputils-ping \
-                less \
-                net-tools \
-                openssl \
-                patch \
-                telnet \
-                vim \
-                wget
+RUN apk add --no-cache \
+        bash \
+        bind-tools \
+        curl \
+        less \
+        openssl \
+        patch \
+        vim \
+        wget
+
 CMD bash

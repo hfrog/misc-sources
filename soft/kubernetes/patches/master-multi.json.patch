@@ -1,0 +1,13 @@
+--- ./kubernetes/cluster/images/hyperkube/static-pods/master-multi.json.orig	2016-11-10 20:44:55.697330962 +0300
++++ ./kubernetes/cluster/images/hyperkube/static-pods/master-multi.json	2016-11-10 20:48:04.852116515 +0300
+@@ -84,7 +84,9 @@
+   "volumes": [
+     {
+       "name": "data",
+-      "emptyDir": {}
++      "hostPath": {
++        "path": "/srv/kubernetes"
++      }
+     }
+   ]
+  }

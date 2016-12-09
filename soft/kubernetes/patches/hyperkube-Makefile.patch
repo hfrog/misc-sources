@@ -1,0 +1,19 @@
+--- ./kubernetes/cluster/images/hyperkube/Makefile.orig	2016-12-09 22:44:01.625965484 +0300
++++ ./kubernetes/cluster/images/hyperkube/Makefile	2016-12-09 22:48:24.031004698 +0300
+@@ -63,6 +63,16 @@
+ 	cp ../../addons/dashboard/dashboard-controller.yaml ${TEMP_DIR}/addons/singlenode/
+ 	cp ../../addons/dashboard/dashboard-service.yaml ${TEMP_DIR}/addons/singlenode/
+ 
++	# Heapster
++	cp ../../addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml ${TEMP_DIR}/addons/singlenode/
++	cp ../../addons/cluster-monitoring/influxdb/influxdb-service.yaml ${TEMP_DIR}/addons/singlenode/
++	cp ../../addons/cluster-monitoring/influxdb/grafana-service.yaml ${TEMP_DIR}/addons/singlenode/
++	cp ../../addons/cluster-monitoring/influxdb/heapster-controller.yaml ${TEMP_DIR}/addons/singlenode/
++	cp ../../addons/cluster-monitoring/influxdb/heapster-service.yaml ${TEMP_DIR}/addons/singlenode/
++
++	# Weave scope. Create it manually
++	#cp ../../addons/weave-scope/*.yaml ${TEMP_DIR}/addons/singlenode/
++
+ 	# Multinode addons; all singlenode addons plus kube-proxy (and soon flannel)
+ 	cp ${TEMP_DIR}/addons/singlenode/*.yaml ${TEMP_DIR}/addons/multinode/
+ 	cp kube-proxy-ds.yaml ${TEMP_DIR}/addons/multinode/kube-proxy.yaml

@@ -1,0 +1,44 @@
+--- ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml.orig	2016-12-09 22:56:09.468689287 +0300
++++ ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml	2016-12-09 22:59:05.294805085 +0300
+@@ -1,26 +1,23 @@
+-apiVersion: v1
+-kind: ReplicationController
++apiVersion: extensions/v1beta1
++kind: Deployment
+ metadata:
+-  name: monitoring-influxdb-grafana-v4
++  name: monitoring-influxdb-grafana
+   namespace: kube-system
+   labels: 
+     k8s-app: influxGrafana
+-    version: v4
+     kubernetes.io/cluster-service: "true"
+ spec: 
+   replicas: 1
+   selector: 
+-    k8s-app: influxGrafana
+-    version: v4
++    matchLabels:
++      k8s-app: influxGrafana
+   template: 
+     metadata: 
+       labels: 
+         k8s-app: influxGrafana
+-        version: v4
+-        kubernetes.io/cluster-service: "true"
+     spec: 
+       containers: 
+-        - image: gcr.io/google_containers/heapster_influxdb:v0.7
++        - image: dcr.qiwi.com/gcr.io/google_containers/heapster_influxdb:v0.7
+           name: influxdb
+           resources:
+             # keep request = limit to keep this container in guaranteed class
+@@ -36,7 +33,7 @@
+           volumeMounts:
+           - name: influxdb-persistent-storage
+             mountPath: /data
+-        - image: gcr.io/google_containers/heapster_grafana:v3.1.1
++        - image: dcr.qiwi.com/gcr.io/google_containers/heapster_grafana:v3.1.1
+           name: grafana
+           env:
+           resources:

@@ -29,7 +29,7 @@ alias h='history 25'
 alias j='jobs -l'
 alias ss='sudo bash'
 alias dt='dmesg | tail -20'
-export LESS='-inS'
+export LESS='-inRS'
 export LESSCHARSET=koi8-r
 #export LESSOPEN="|lesspipe.sh %s"
 export EXINIT='set ai nows sw=4 et'

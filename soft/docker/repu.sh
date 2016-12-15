@@ -51,7 +51,7 @@ rm -f ${T_SH}
                 [ -f \$f ] && grep -i \\\"image\\\": \$f \
                     | awk -F\\\" '{print \$(NF-1)}';
             done
-        done"
+        done | grep ${LOCAL_REGISTRY}"
 ) | tr -d '\r' | sort | uniq | while read i; do
     echo $i | grep -qs "^${LOCAL_REGISTRY}" || { echo "error: non-local image $i"; exit 1; }
     gi=${i#${LOCAL_REGISTRY}/}  # global image

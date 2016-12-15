@@ -5,7 +5,7 @@
        {
          "name": "kube-addon-manager",
 -        "image": "REGISTRY/kube-addon-manager-ARCH:v6.1",
-+        "image": "dcr.qiwi.com/gcr.io/google_containers/kube-addon-manager-ARCH:v6.1",
++        "image": "gcr.io/google_containers/kube-addon-manager-ARCH:v6.1",
          "resources": {
            "requests": {
              "cpu": "5m",

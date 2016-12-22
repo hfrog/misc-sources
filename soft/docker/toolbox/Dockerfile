@@ -6,9 +6,11 @@ RUN apk add --no-cache \
         bash \
         bind-tools \
         curl \
+        iputils \
         less \
         openssl \
         patch \
+        tcpdump \
         vim \
         wget
 

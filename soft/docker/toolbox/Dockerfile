@@ -8,6 +8,7 @@ RUN apk add --no-cache \
         curl \
         iputils \
         less \
+        openssh-client \
         openssl \
         patch \
         tcpdump \

@@ -1,6 +1,6 @@
 #
-# $Id: .bashrc,v 1.3 2016/03/23 15:34:47 root Exp $
-# $Template: 1.19 $
+# $Id: .bashrc,v 1.3 2017/04/22 17:57:16 aivanov Exp aivanov $
+# $Template: 1.20 $
 #
 os ()
 {
@@ -47,7 +47,7 @@ if [ -t 0 ] && [[ $- == *i* ]]; then
 	    alias ll='ls -lF'
 	    alias psap='ps axww | grep http | grep s\ '
 	    alias hd='hexdump -C'
-	    EXINIT=${EXINIT:+${EXINIT}'|set cedit= ic'}
+	    EXINIT=${EXINIT:+${EXINIT}'|set cedit= ic modeline enc=utf-8'}
 	    ;;
 	sunos)
 	    # stty -icanon is buggy, set it by hands when you want

@@ -1,5 +1,5 @@
---- ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml.orig	2016-12-15 13:39:43.954137250 +0300
-+++ ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml	2016-12-15 13:44:06.705331120 +0300
+--- ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml.orig	2017-05-03 12:06:04.660316413 +0300
++++ ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml	2017-05-03 12:17:34.182925791 +0300
 @@ -1,7 +1,7 @@
 -apiVersion: v1
 -kind: ReplicationController
@@ -11,7 +11,7 @@
    namespace: kube-system
    labels: 
      k8s-app: influxGrafana
-@@ -12,12 +12,13 @@
+@@ -13,12 +13,13 @@
    selector: 
      k8s-app: influxGrafana
      version: v4
@@ -25,4 +25,4 @@
 -        kubernetes.io/cluster-service: "true"
      spec: 
        containers: 
-         - image: gcr.io/google_containers/heapster_influxdb:v0.7
+         - image: gcr.io/google_containers/heapster-influxdb-amd64:v1.1.1

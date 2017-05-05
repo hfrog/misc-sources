@@ -1,5 +1,5 @@
---- ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml.orig	2017-05-03 12:06:04.660316413 +0300
-+++ ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml	2017-05-03 12:17:34.182925791 +0300
+--- ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml.orig	2017-05-05 17:28:47.722557588 +0300
++++ ./kubernetes/cluster/addons/cluster-monitoring/influxdb/influxdb-grafana-controller.yaml	2017-05-05 17:32:08.950974070 +0300
 @@ -1,7 +1,7 @@
 -apiVersion: v1
 -kind: ReplicationController
@@ -11,11 +11,14 @@
    namespace: kube-system
    labels: 
      k8s-app: influxGrafana
-@@ -13,12 +13,13 @@
+@@ -11,14 +11,14 @@
+ spec: 
+   replicas: 1
    selector: 
-     k8s-app: influxGrafana
-     version: v4
+-    k8s-app: influxGrafana
+-    version: v4
 +    matchLabels:
++      version: v4
 +      k8s-app: influxGrafana
    template: 
      metadata: 

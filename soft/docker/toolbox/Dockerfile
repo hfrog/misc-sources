@@ -15,5 +15,7 @@ RUN apk add --no-cache \
         tcpdump \
         vim \
         wget
+RUN mv /usr/bin/telnet /usr/bin/telnet-stock
+RUN ln -s /usr/bin/ktelnet /usr/bin/telnet
 
 CMD bash

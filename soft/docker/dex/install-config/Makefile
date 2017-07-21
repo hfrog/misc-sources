@@ -1,6 +1,6 @@
 
 IMG=hfrog/dex-install-config
-TAG=v1.0
+TAG=v1.1
 
 .PHONY: all build push
 all: build push

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # vim: set sw=2 :
 
 if [[ -z ${1+x} ]]; then

@@ -1,6 +1,6 @@
 #
-# $Id: .bashrc,v 1.3 2017/04/22 17:57:16 aivanov Exp aivanov $
-# $Template: 1.20 $
+# $Id: .bashrc,v 1.3 2020/02/18 16:23:16 aivanov Exp aivanov $
+# $Template: 1.21 $
 #
 os ()
 {
@@ -67,7 +67,8 @@ if [ -n "$PS1" ]; then
 fi
 export IGNOREEOF=0
 export HISTCONTROL=ignoreboth
-#export HISTTIMEFORMAT=1
+export HISTTIMEFORMAT='%F %T '
+shopt -s histappend
 choose_logfile ()
 {
     logdirs='/var/log /var/adm /var/cron'
